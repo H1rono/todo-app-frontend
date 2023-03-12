@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Typography } from "@mui/material";
+import App from "./App";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <Typography variant="h3" component="h1">
-            Hello, world!
-        </Typography>
+        <App />
     </React.StrictMode>
 );
