@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { CheckBoxOutlineBlank } from "@mui/icons-material";
-import { Checkbox, List as MList, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { css } from "@emotion/react";
+import { List as MList } from "@mui/material";
 import { Todo } from "./Model";
+import ListItem from "./ListItem";
 
 export type ListProps = {
     todos: Todo[];
@@ -13,11 +12,7 @@ export type ListProps = {
 const List = ({ todos, onChange }: ListProps) => (
     <MList>
         {todos.map((todo) => (
-            // TODO: export ListItem
-            <ListItem>
-                <Checkbox checked={todo.done} onChange={(e) => onChange(todo.id, e.target.checked)} />
-                <ListItemText primary={todo.title} />
-            </ListItem>
+            <ListItem key={todo.id} model={todo} onChange={(done) => onChange(todo.id, done)} />
         ))}
     </MList>
 );
