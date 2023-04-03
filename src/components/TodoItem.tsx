@@ -1,5 +1,5 @@
 import { ListItem as MListItem, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
-import { Todo } from "./Model";
+import { Todo } from "../model/Todo";
 
 export type ListItemProps = {
     key: number;

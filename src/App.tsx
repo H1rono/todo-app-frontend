@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import { useState } from "react";
-import { Todo } from "./todo/Model";
-import TodoList from "./todo/List";
+import { Todo } from "./model/Todo";
+import TodoList from "./components/TodoList";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([

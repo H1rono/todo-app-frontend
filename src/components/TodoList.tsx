@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
 import { List as MList } from "@mui/material";
-import { Todo } from "./Model";
-import ListItem from "./ListItem";
+import { Todo } from "../model/Todo";
+import ListItem from "./TodoItem";
 
 export type ListProps = {
     todos: Todo[];
