@@ -25,9 +25,7 @@ const App = () => {
             <TodoList
                 todos={todos}
                 onChange={(e) => {
-                    console.log(e);
                     if (isAddTodo(e)) {
-                        console.log("add");
                         setTodos([
                             ...todos,
                             {
@@ -39,10 +37,8 @@ const App = () => {
                             },
                         ]);
                     } else if (isEditTodo(e)) {
-                        console.log("edit");
                         setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
                     } else {
-                        console.log("remove");
                         setTodos(todos.filter((todo) => todo.id !== e.id));
                     }
                 }}
