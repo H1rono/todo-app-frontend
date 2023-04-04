@@ -11,7 +11,10 @@
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
     "fmt": "prettier --write .",
-    "fmt:check": "prettier --check ."
+    "fmt:check": "prettier --check .",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "lint:warn": "eslint . --ext .ts,.tsx --max-warnings 0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -24,8 +27,13 @@
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.8",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.7",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
