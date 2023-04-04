@@ -2,12 +2,12 @@ import { ListItem as MListItem, ListItemIcon, ListItemText, Checkbox } from "@mu
 import { Todo } from "../model/Todo";
 import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
 
-export type ListItemProps = {
+export type TodoItemProps = {
     model: Todo;
     onChange: (event: ChangeTodos) => void;
 };
 
-const ListItem = ({ model, onChange }: ListItemProps) => (
+const TodoItem = ({ model, onChange }: TodoItemProps) => (
     <MListItem>
         <ListItemIcon>
             <Checkbox
@@ -28,4 +28,4 @@ const ListItem = ({ model, onChange }: ListItemProps) => (
     </MListItem>
 );
 
-export default ListItem;
+export default TodoItem;
