@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
-import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
+import { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([
@@ -38,7 +38,7 @@ const App = () => {
                         ]);
                     } else if (isEditTodo(e)) {
                         setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
-                    } else {
+                    } else if (isRemoveTodo(e)) {
                         setTodos(todos.filter((todo) => todo.id !== e.id));
                     }
                 }}
