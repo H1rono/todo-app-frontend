@@ -2,3 +2,5 @@
 package.json
 package-lock.json
 dist/
+.eslintrc.cjs
+vite.config.ts
