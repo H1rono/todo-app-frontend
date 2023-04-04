@@ -3,16 +3,17 @@
 import { List as MList } from "@mui/material";
 import { Todo } from "../model/Todo";
 import ListItem from "./TodoItem";
+import ChangeTodos from "../model/ChangeTodos";
 
 export type ListProps = {
     todos: Todo[];
-    onChange: (id: number, done: boolean) => void;
+    onChange: (event: ChangeTodos) => void;
 };
 
 const List = ({ todos, onChange }: ListProps) => (
     <MList>
         {todos.map((todo) => (
-            <ListItem key={todo.id} model={todo} onChange={(done) => onChange(todo.id, done)} />
+            <ListItem key={todo.id} model={todo} onChange={onChange} />
         ))}
     </MList>
 );

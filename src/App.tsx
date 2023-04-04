@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
+import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([
@@ -23,7 +24,28 @@ const App = () => {
             </Typography>
             <TodoList
                 todos={todos}
-                onChange={(id, done) => setTodos(todos.map((todo) => (todo.id === id ? { ...todo, done } : todo)))}
+                onChange={(e) => {
+                    console.log(e);
+                    if (isAddTodo(e)) {
+                        console.log("add");
+                        setTodos([
+                            ...todos,
+                            {
+                                ...e,
+                                id: todos.length + 1,
+                                createdAt: new Date(),
+                                updatedAt: new Date(),
+                                deletedAt: undefined,
+                            },
+                        ]);
+                    } else if (isEditTodo(e)) {
+                        console.log("edit");
+                        setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
+                    } else {
+                        console.log("remove");
+                        setTodos(todos.filter((todo) => todo.id !== e.id));
+                    }
+                }}
             />
         </>
     );
