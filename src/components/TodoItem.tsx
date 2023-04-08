@@ -1,4 +1,6 @@
-import { ListItem as MListItem, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+import { ListItem, ListItemIcon, ListItemText, Checkbox } from "@mui/material";
 import { Todo } from "../model/Todo";
 import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
 
@@ -8,7 +10,11 @@ export type TodoItemProps = {
 };
 
 const TodoItem = ({ model, onChange }: TodoItemProps) => (
-    <MListItem>
+    <ListItem
+        css={css({
+            borderBottom: "1px solid black",
+        })}
+    >
         <ListItemIcon>
             <Checkbox
                 checked={model.done}
@@ -25,7 +31,12 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => (
             />
         </ListItemIcon>
         <ListItemText primary={model.title} />
-    </MListItem>
+        <ListItemText
+            primary={model.dueTo.toLocaleString("ja-JP")}
+            css={css({ display: "flex", justifyContent: "flex-end" })}
+            disableTypography
+        />
+    </ListItem>
 );
 
 export default TodoItem;
