@@ -3,6 +3,7 @@ import { useState } from "react";
 import { css } from "@emotion/react";
 import { ListItem, ListItemIcon, ListItemText, Checkbox, ListItemButton } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
+import dayjs from "dayjs";
 import { Todo } from "../model/Todo";
 import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
 import TodoModal from "./TodoModal";
@@ -37,7 +38,7 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => {
             </ListItemButton>
             <TodoModal open={modalOpen} model={model} onChange={onChange} close={() => setModalOpen(false)} />
             <ListItemText
-                primary={model.dueTo.toLocaleString("ja-JP")}
+                primary={dayjs(model.dueTo).format("YYYY年MM月DD日 HH:mm:ss")}
                 css={css({ display: "flex", justifyContent: "flex-end" })}
                 disableTypography
             />

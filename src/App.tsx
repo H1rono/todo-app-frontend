@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
 import { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
+import { LocalizationProvider, jaJP } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([
@@ -18,7 +20,10 @@ const App = () => {
         },
     ]);
     return (
-        <>
+        <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            localeText={jaJP.components.MuiLocalizationProvider.defaultProps.localeText}
+        >
             <Typography variant="h3" component="h1">
                 Todo App
             </Typography>
@@ -43,7 +48,7 @@ const App = () => {
                     }
                 }}
             />
-        </>
+        </LocalizationProvider>
     );
 };
 

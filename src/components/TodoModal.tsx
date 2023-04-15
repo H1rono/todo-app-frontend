@@ -4,6 +4,8 @@ import { Modal, Box, Checkbox, TextField } from "@mui/material";
 import { css } from "@emotion/react";
 import { Todo } from "../model/Todo";
 import ChangeTodos from "../model/ChangeTodos";
+import { DateTimePicker } from "@mui/x-date-pickers";
+import dayjs from "dayjs";
 
 export type TodoModalProps = {
     open: boolean;
@@ -18,7 +20,6 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
         setLocalModel(structuredClone(model));
         close();
     };
-    // TODO: Datetime picker
     // TODO: Save the changes
     return (
         <Modal open={open} aria-labelledby="todo modal" onClose={abort}>
@@ -49,7 +50,7 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                     label="Title"
                     variant="standard"
                     defaultValue={localModel.title}
-                    css={css({ width: "50%" })}
+                    css={css({ width: "50%", flex: "1 1 auto" })}
                     onChange={(e) => {
                         setLocalModel({
                             ...localModel,
@@ -57,6 +58,19 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                         });
                     }}
                 />
+                <Box css={css({ width: "100%", padding: "1em 0" })}>
+                    <DateTimePicker
+                        label="Due to"
+                        value={dayjs(localModel.dueTo)}
+                        format="YYYY年MM月DD日 HH:mm:ss"
+                        onChange={(newValue) => {
+                            setLocalModel({
+                                ...localModel,
+                                dueTo: newValue?.toDate() ?? localModel.dueTo,
+                            });
+                        }}
+                    />
+                </Box>
                 <TextField
                     label="Note"
                     variant="standard"
