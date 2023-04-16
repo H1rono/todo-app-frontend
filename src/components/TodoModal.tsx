@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { css } from "@emotion/react";
 import { Todo } from "../model/Todo";
-import ChangeTodos from "../model/ChangeTodos";
+import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
@@ -14,13 +14,23 @@ export type TodoModalProps = {
     close: () => void;
 };
 
-const TodoModal = ({ open, model, close }: TodoModalProps) => {
+const TodoModal = ({ open, model, onChange, close }: TodoModalProps) => {
     const [localModel, setLocalModel] = useState<Todo>(structuredClone(model));
     const abort = () => {
         setLocalModel(structuredClone(model));
         close();
     };
-    // TODO: Save the changes
+    const save = () => {
+        const change: EditTodo = {
+            id: localModel.id,
+            title: localModel.title,
+            note: localModel.note,
+            dueTo: localModel.dueTo,
+            done: localModel.done,
+        };
+        onChange(change);
+        close();
+    };
     return (
         <Modal open={open} aria-labelledby="todo modal" onClose={abort}>
             <Box
@@ -94,7 +104,12 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                     <Button variant="contained" color="error" onClick={abort} css={css({ textTransform: "none" })}>
                         cancel
                     </Button>
-                    <Button variant="contained" color="success" css={css({ margin: "0 1rem", textTransform: "none" })}>
+                    <Button
+                        variant="contained"
+                        color="success"
+                        onClick={save}
+                        css={css({ margin: "0 1rem", textTransform: "none" })}
+                    >
                         save
                     </Button>
                 </Box>
