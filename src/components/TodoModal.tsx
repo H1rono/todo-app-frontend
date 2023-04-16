@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import { Modal, Box, Checkbox, TextField } from "@mui/material";
+import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { css } from "@emotion/react";
 import { Todo } from "../model/Todo";
 import ChangeTodos from "../model/ChangeTodos";
@@ -30,15 +30,20 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                     left: "50%",
                     backgroundColor: "white",
                     transform: "translate(-50%, -50%)",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "flex-start",
+                    alignItems: "start",
                     padding: "1rem",
                     maxWidth: "100%",
                     width: "800px",
                     maxHeight: "100%",
-                    height: "600px",
+                    height: "fit-content",
                 })}
             >
                 <Checkbox
                     checked={localModel.done}
+                    css={css({ flex: "0 0 auto" })}
                     onChange={(e) =>
                         setLocalModel({
                             ...localModel,
@@ -50,7 +55,7 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                     label="Title"
                     variant="standard"
                     defaultValue={localModel.title}
-                    css={css({ width: "50%", flex: "1 1 auto" })}
+                    css={css({ flex: "1 1 auto" })}
                     onChange={(e) => {
                         setLocalModel({
                             ...localModel,
@@ -85,6 +90,14 @@ const TodoModal = ({ open, model, close }: TodoModalProps) => {
                         });
                     }}
                 />
+                <Box css={css({ justifySelf: "flex-end", alignSelf: "end", marginLeft: "auto", paddingTop: "1rem" })}>
+                    <Button variant="contained" color="error" onClick={abort} css={css({ textTransform: "none" })}>
+                        cancel
+                    </Button>
+                    <Button variant="contained" color="success" css={css({ margin: "0 1rem", textTransform: "none" })}>
+                        save
+                    </Button>
+                </Box>
             </Box>
         </Modal>
     );
