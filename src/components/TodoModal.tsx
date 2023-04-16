@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
-import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { css } from "@emotion/react";
-import { Todo } from "../model/Todo";
-import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
+import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
+import { Todo } from "../model/Todo";
+import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
 
 export type TodoModalProps = {
     open: boolean;
