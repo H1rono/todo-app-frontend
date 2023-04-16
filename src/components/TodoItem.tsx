@@ -36,7 +36,13 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => {
             <ListItemButton css={css({ flex: "0 0 auto" })} onClick={() => setModalOpen(true)}>
                 <EditNoteIcon />
             </ListItemButton>
-            <TodoModal open={modalOpen} model={model} onChange={onChange} close={() => setModalOpen(false)} />
+            <TodoModal
+                kind="EDIT"
+                open={modalOpen}
+                model={model}
+                onChange={onChange}
+                close={() => setModalOpen(false)}
+            />
             <ListItemText
                 primary={dayjs(model.dueTo).format("YYYY年MM月DD日 HH:mm:ss")}
                 css={css({ display: "flex", justifyContent: "flex-end" })}

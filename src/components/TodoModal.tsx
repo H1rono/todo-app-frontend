@@ -5,30 +5,54 @@ import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 import { Todo } from "../model/Todo";
-import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
+import ChangeTodos, { EditTodo, AddTodo } from "../model/ChangeTodos";
+
+export type ModalKind = "ADD" | "EDIT";
 
 export type TodoModalProps = {
+    kind: ModalKind;
     open: boolean;
-    model: Todo;
+    model?: Todo;
     onChange: (event: ChangeTodos) => void;
     close: () => void;
 };
 
-const TodoModal = ({ open, model, onChange, close }: TodoModalProps) => {
-    const [localModel, setLocalModel] = useState<Todo>(structuredClone(model));
+const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
+    const m = model ?? {
+        id: 0,
+        title: "",
+        note: "",
+        dueTo: new Date(),
+        done: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        deletedAt: undefined,
+    };
+    const [localModel, setLocalModel] = useState<Todo>(structuredClone(m));
     const abort = () => {
-        setLocalModel(structuredClone(model));
+        setLocalModel(structuredClone(m));
         close();
     };
     const save = () => {
-        const change: EditTodo = {
-            id: localModel.id,
-            title: localModel.title,
-            note: localModel.note,
-            dueTo: localModel.dueTo,
-            done: localModel.done,
-        };
-        onChange(change);
+        let event: ChangeTodos;
+        if (kind === "EDIT") {
+            event = {
+                id: localModel.id,
+                title: localModel.title,
+                note: localModel.note,
+                dueTo: localModel.dueTo,
+                done: localModel.done,
+            } as EditTodo;
+        } else {
+            /* kind === "ADD" */
+            event = {
+                title: localModel.title,
+                note: localModel.note,
+                dueTo: localModel.dueTo,
+                done: localModel.done,
+            } as AddTodo;
+        }
+        onChange(event);
         close();
     };
     return (
@@ -110,7 +134,7 @@ const TodoModal = ({ open, model, onChange, close }: TodoModalProps) => {
                         onClick={save}
                         css={css({ margin: "0 1rem", textTransform: "none" })}
                     >
-                        save
+                        {kind === "EDIT" ? "save" : "add"}
                     </Button>
                 </Box>
             </Box>
