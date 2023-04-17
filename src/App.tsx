@@ -4,7 +4,7 @@ import { LocalizationProvider, jaJP } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
-import { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
+import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
 import fetchAll from "./controller/fetchAll";
 
 const App = () => {
@@ -12,6 +12,24 @@ const App = () => {
     useEffect(() => {
         fetchAll().then((todos) => setTodos(todos));
     }, []);
+    const onChange = (e: ChangeTodos) => {
+        if (isAddTodo(e)) {
+            setTodos([
+                ...todos,
+                {
+                    ...e,
+                    id: todos.length + 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    deletedAt: undefined,
+                },
+            ]);
+        } else if (isEditTodo(e)) {
+            setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
+        } else if (isRemoveTodo(e)) {
+            setTodos(todos.filter((todo) => todo.id !== e.id));
+        }
+    };
     return (
         <LocalizationProvider
             dateAdapter={AdapterDayjs}
@@ -20,27 +38,7 @@ const App = () => {
             <Typography variant="h3" component="h1">
                 Todo App
             </Typography>
-            <TodoList
-                todos={todos}
-                onChange={(e) => {
-                    if (isAddTodo(e)) {
-                        setTodos([
-                            ...todos,
-                            {
-                                ...e,
-                                id: todos.length + 1,
-                                createdAt: new Date(),
-                                updatedAt: new Date(),
-                                deletedAt: undefined,
-                            },
-                        ]);
-                    } else if (isEditTodo(e)) {
-                        setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
-                    } else if (isRemoveTodo(e)) {
-                        setTodos(todos.filter((todo) => todo.id !== e.id));
-                    }
-                }}
-            />
+            <TodoList todos={todos} onChange={onChange} />
         </LocalizationProvider>
     );
 };
