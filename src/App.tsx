@@ -1,24 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { LocalizationProvider, jaJP } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
 import { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
+import fetchAll from "./controller/fetchAll";
 
 const App = () => {
-    const [todos, setTodos] = useState<Todo[]>([
-        {
-            id: 1,
-            title: "todo",
-            note: "",
-            done: false,
-            dueTo: new Date(),
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            deletedAt: undefined,
-        },
-    ]);
+    const [todos, setTodos] = useState<Todo[]>([]);
+    useEffect(() => {
+        fetchAll().then((todos) => setTodos(todos));
+    }, []);
     return (
         <LocalizationProvider
             dateAdapter={AdapterDayjs}
