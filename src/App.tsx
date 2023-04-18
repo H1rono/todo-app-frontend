@@ -6,6 +6,7 @@ import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
 import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
 import fetchAll from "./controller/fetchAll";
+import addTodo from "./controller/addTodo";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -14,16 +15,9 @@ const App = () => {
     }, []);
     const onChange = (e: ChangeTodos) => {
         if (isAddTodo(e)) {
-            setTodos([
-                ...todos,
-                {
-                    ...e,
-                    id: todos.length + 1,
-                    createdAt: new Date(),
-                    updatedAt: new Date(),
-                    deletedAt: undefined,
-                },
-            ]);
+            addTodo({
+                ...e,
+            }).then((todo) => setTodos([...todos, todo]));
         } else if (isEditTodo(e)) {
             setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
         } else if (isRemoveTodo(e)) {
