@@ -5,8 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
 import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
-import fetchAll from "./controller/fetchAll";
-import addTodo from "./controller/addTodo";
+import { fetchAll, addTodo, editTodo } from "./controller";
 
 const App = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -19,9 +18,20 @@ const App = () => {
                 ...e,
             }).then((todo) => setTodos([...todos, todo]));
         } else if (isEditTodo(e)) {
-            setTodos(todos.map((todo) => (todo.id === e.id ? { ...todo, ...e } : todo)));
+            const id = e.id;
+            const todo = {
+                title: e.title,
+                note: e.note,
+                due_to: e.due_to,
+                done: e.done,
+            };
+            editTodo(id, todo).then((newTodo) => {
+                setTodos(todos.map((todo) => (todo.id === newTodo.id ? newTodo : todo)));
+            });
         } else if (isRemoveTodo(e)) {
             setTodos(todos.filter((todo) => todo.id !== e.id));
+        } else {
+            console.error("Unknown event", e);
         }
     };
     return (
