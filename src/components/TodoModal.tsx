@@ -33,7 +33,7 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
         setLocalModel(structuredClone(m));
         close();
     };
-    const save = () => {
+    const saveOrAdd = () => {
         let event: ChangeTodos;
         if (kind === "EDIT") {
             event = {
@@ -131,7 +131,7 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
                     <Button
                         variant="contained"
                         color="success"
-                        onClick={save}
+                        onClick={saveOrAdd}
                         css={css({ margin: "0 1rem", textTransform: "none" })}
                     >
                         {kind === "EDIT" ? "save" : "add"}
