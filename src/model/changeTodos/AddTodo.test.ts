@@ -8,6 +8,6 @@ test("isAddTodo", () => {
     expect(isAddTodo("")).toBe(false);
     expect(isAddTodo({})).toBe(false);
     expect(isAddTodo({ title: "title", note: "note", done: true })).toBe(false);
-    expect(isAddTodo({ title: "title", note: "note", done: true, dueTo: new Date() })).toBe(true);
-    expect(isAddTodo({ id: 0, title: "title", note: "note", done: true, dueTo: new Date() })).toBe(false);
+    expect(isAddTodo({ title: "title", note: "note", done: true, due_to: new Date() })).toBe(true);
+    expect(isAddTodo({ id: 0, title: "title", note: "note", done: true, due_to: new Date() })).toBe(false);
 });

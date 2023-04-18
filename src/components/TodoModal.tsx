@@ -22,11 +22,11 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
         id: 0,
         title: "",
         note: "",
-        dueTo: new Date(),
+        due_to: new Date(),
         done: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: undefined,
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: undefined,
     };
     const [localModel, setLocalModel] = useState<Todo>(structuredClone(m));
     const abort = () => {
@@ -40,7 +40,7 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
                 id: localModel.id,
                 title: localModel.title,
                 note: localModel.note,
-                dueTo: localModel.dueTo,
+                due_to: localModel.due_to,
                 done: localModel.done,
             } as EditTodo;
         } else {
@@ -48,7 +48,7 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
             event = {
                 title: localModel.title,
                 note: localModel.note,
-                dueTo: localModel.dueTo,
+                due_to: localModel.due_to,
                 done: localModel.done,
             } as AddTodo;
         }
@@ -100,12 +100,12 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
                 <Box css={css({ width: "100%", padding: "1em 0" })}>
                     <DateTimePicker
                         label="Due to"
-                        value={dayjs(localModel.dueTo)}
+                        value={dayjs(localModel.due_to)}
                         format="YYYY年MM月DD日 HH:mm:ss"
                         onChange={(newValue) => {
                             setLocalModel({
                                 ...localModel,
-                                dueTo: newValue?.toDate() ?? localModel.dueTo,
+                                due_to: newValue?.toDate() ?? localModel.due_to,
                             });
                         }}
                     />
