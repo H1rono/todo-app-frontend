@@ -40,7 +40,7 @@ const App = () => {
             localeText={jaJP.components.MuiLocalizationProvider.defaultProps.localeText}
         >
             <Typography variant="h3" component="h1">
-                Todo App
+                {process.env.VITE_APP_TITLE}
             </Typography>
             <TodoList todos={todos} onChange={onChange} />
         </LocalizationProvider>
