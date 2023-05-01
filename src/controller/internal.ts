@@ -1,6 +1,6 @@
 import { Todo } from "../model/Todo";
 
-export type Payload = Omit<Todo, "due_to" | "created_at" | "updated_at" | "deleted_at"> & {
+export type Payload = Omit<Todo, "dueTo" | "createdAt" | "updatedAt" | "deletedAt"> & {
     due_to: string;
     created_at: string;
     updated_at: string;
@@ -9,10 +9,13 @@ export type Payload = Omit<Todo, "due_to" | "created_at" | "updated_at" | "delet
 
 export const payload2todo = (payload: Payload): Todo => {
     return {
-        ...payload,
-        due_to: new Date(payload.due_to),
-        created_at: new Date(payload.created_at),
-        updated_at: new Date(payload.updated_at),
-        deleted_at: payload.deleted_at !== null ? new Date(payload.deleted_at) : undefined,
+        id: payload.id,
+        title: payload.title,
+        note: payload.note,
+        done: payload.done,
+        dueTo: new Date(payload.due_to),
+        createdAt: new Date(payload.created_at),
+        updatedAt: new Date(payload.updated_at),
+        deletedAt: payload.deleted_at !== null ? new Date(payload.deleted_at) : undefined,
     };
 };

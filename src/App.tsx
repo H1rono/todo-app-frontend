@@ -22,7 +22,7 @@ const App = () => {
             const todo = {
                 title: e.title,
                 note: e.note,
-                due_to: e.due_to,
+                dueTo: e.dueTo,
                 done: e.done,
             };
             editTodo(id, todo).then((newTodo) => {

@@ -3,17 +3,17 @@ type Todo = {
     title: string;
     note: string;
     done: boolean;
-    due_to: Date;
-    created_at: Date;
-    updated_at: Date;
-    deleted_at: Date | undefined;
+    dueTo: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date | undefined;
 };
 
 type PartialTodo = {
     title: string;
     note: string;
     done: boolean;
-    due_to: Date;
+    dueTo: Date;
 };
 
 export type { Todo, PartialTodo };

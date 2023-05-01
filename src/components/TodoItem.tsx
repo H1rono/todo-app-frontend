@@ -26,7 +26,7 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => {
                             done: e.target.checked,
                             title: model.title,
                             note: model.note,
-                            due_to: model.due_to,
+                            dueTo: model.dueTo,
                         };
                         onChange(event);
                     }}
@@ -44,7 +44,7 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => {
                 close={() => setModalOpen(false)}
             />
             <ListItemText
-                primary={dayjs(model.due_to).format("YYYY年MM月DD日 HH:mm:ss")}
+                primary={dayjs(model.dueTo).format("YYYY年MM月DD日 HH:mm:ss")}
                 css={css({ display: "flex", justifyContent: "flex-end" })}
                 disableTypography
             />

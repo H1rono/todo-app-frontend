@@ -10,7 +10,7 @@ function isAddTodo(arg: any): arg is AddTodo {
         typeof arg.title === "string" &&
         typeof arg.note === "string" &&
         typeof arg.done === "boolean" &&
-        arg.due_to instanceof Date
+        arg.dueTo instanceof Date
     );
 }
 

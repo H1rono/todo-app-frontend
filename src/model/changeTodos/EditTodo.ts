@@ -3,7 +3,7 @@ type EditTodo = {
     title: string;
     note: string;
     done: boolean;
-    due_to: Date;
+    dueTo: Date;
 };
 
 function isEditTodo(arg: any): arg is EditTodo {
@@ -15,7 +15,7 @@ function isEditTodo(arg: any): arg is EditTodo {
         typeof arg.title === "string" &&
         typeof arg.note === "string" &&
         typeof arg.done === "boolean" &&
-        arg.due_to instanceof Date
+        arg.dueTo instanceof Date
     );
 }
 
