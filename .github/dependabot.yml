@@ -14,3 +14,12 @@ updates:
       time: "08:00"
     reviewers:
       - "H1rono"
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "sunday"
+      timezone: "Asia/Tokyo"
+      time: "08:00"
+    reviewers:
+      - "H1rono"
