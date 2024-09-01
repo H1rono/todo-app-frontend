@@ -10,8 +10,6 @@
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
-    "fmt": "prettier --write .",
-    "fmt:check": "prettier --check .",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "lint:warn": "eslint . --ext .ts,.tsx --max-warnings 0"
@@ -35,9 +33,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/coverage-v8": "^1.6.0",
     "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.35.0",
-    "prettier": "^3.2.5",
     "typescript": "^5.5.2",
     "vite": "^5.0.13",
     "vitest": "^1.6.0"
