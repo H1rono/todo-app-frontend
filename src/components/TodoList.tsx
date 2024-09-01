@@ -3,9 +3,9 @@ import { useState } from "react";
 import { css } from "@emotion/react";
 import { List, ListItem, ListItemButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { Todo } from "../model/Todo";
+import type { Todo } from "../model/Todo";
 import TodoItem from "./TodoItem";
-import ChangeTodos from "../model/ChangeTodos";
+import type ChangeTodos from "../model/ChangeTodos";
 import TodoModal from "./TodoModal";
 
 export type TodoListProps = {

@@ -4,8 +4,9 @@ import { css } from "@emotion/react";
 import { Modal, Box, Checkbox, TextField, Button } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
-import { Todo } from "../model/Todo";
-import ChangeTodos, { EditTodo, AddTodo } from "../model/ChangeTodos";
+import type { Todo } from "../model/Todo";
+import type ChangeTodos from "../model/ChangeTodos";
+import type { EditTodo, AddTodo } from "../model/ChangeTodos";
 
 export type ModalKind = "ADD" | "EDIT";
 

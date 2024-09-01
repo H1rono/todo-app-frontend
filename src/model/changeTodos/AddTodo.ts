@@ -1,16 +1,18 @@
-import { PartialTodo } from "../Todo";
+import type { PartialTodo } from "../Todo";
 
 type AddTodo = PartialTodo;
 
-function isAddTodo(arg: any): arg is AddTodo {
+function isAddTodo(arg: unknown): arg is AddTodo {
+    if (!arg || typeof arg !== "object") {
+        return false;
+    }
+    const addTodo = arg as Record<keyof AddTodo, unknown>;
     return (
-        arg !== null &&
-        typeof arg === "object" &&
-        Object.keys(arg).length === 4 &&
-        typeof arg.title === "string" &&
-        typeof arg.note === "string" &&
-        typeof arg.done === "boolean" &&
-        arg.dueTo instanceof Date
+        Object.keys(addTodo).length === 4 &&
+        typeof addTodo.title === "string" &&
+        typeof addTodo.note === "string" &&
+        typeof addTodo.done === "boolean" &&
+        addTodo.dueTo instanceof Date
     );
 }
 

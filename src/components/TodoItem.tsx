@@ -10,8 +10,9 @@ import {
 } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import dayjs from "dayjs";
-import { Todo } from "../model/Todo";
-import ChangeTodos, { EditTodo } from "../model/ChangeTodos";
+import type { Todo } from "../model/Todo";
+import type ChangeTodos from "../model/ChangeTodos";
+import type { EditTodo } from "../model/ChangeTodos";
 import TodoModal from "./TodoModal";
 
 export type TodoItemProps = {

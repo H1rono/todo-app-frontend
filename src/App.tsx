@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
 import { LocalizationProvider, jaJP } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Todo } from "./model/Todo";
+import type { Todo } from "./model/Todo";
 import TodoList from "./components/TodoList";
-import ChangeTodos, { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
+import type ChangeTodos from "./model/ChangeTodos";
+import { isAddTodo, isEditTodo, isRemoveTodo } from "./model/ChangeTodos";
 import { fetchAll, addTodo, editTodo } from "./controller";
 
 const App = () => {

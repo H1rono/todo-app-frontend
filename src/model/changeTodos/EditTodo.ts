@@ -6,16 +6,18 @@ type EditTodo = {
     dueTo: Date;
 };
 
-function isEditTodo(arg: any): arg is EditTodo {
+function isEditTodo(arg: unknown): arg is EditTodo {
+    if (!arg || typeof arg !== "object") {
+        return false;
+    }
+    const editTodo = arg as Record<keyof EditTodo, unknown>;
     return (
-        arg !== null &&
-        typeof arg === "object" &&
-        Object.keys(arg).length === 5 &&
-        typeof arg.id === "number" &&
-        typeof arg.title === "string" &&
-        typeof arg.note === "string" &&
-        typeof arg.done === "boolean" &&
-        arg.dueTo instanceof Date
+        Object.keys(editTodo).length === 5 &&
+        typeof editTodo.id === "number" &&
+        typeof editTodo.title === "string" &&
+        typeof editTodo.note === "string" &&
+        typeof editTodo.done === "boolean" &&
+        editTodo.dueTo instanceof Date
     );
 }
 

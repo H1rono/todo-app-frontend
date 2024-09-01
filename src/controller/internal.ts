@@ -1,4 +1,4 @@
-import { Todo, PartialTodo } from "../model/Todo";
+import type { Todo, PartialTodo } from "../model/Todo";
 
 export type Payload = Omit<Todo, "dueTo" | "createdAt" | "updatedAt" | "deletedAt"> & {
     due_to: string;

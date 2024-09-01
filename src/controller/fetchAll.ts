@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Todo } from "../model/Todo";
-import { Payload, payload2todo } from "./internal";
+import type { Todo } from "../model/Todo";
+import { type Payload, payload2todo } from "./internal";
 
 const fetchAll = async (): Promise<Todo[]> => {
     const response = await axios.get<Payload[]>("/api/todos");

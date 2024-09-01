@@ -1,6 +1,6 @@
 import axios from "axios";
-import { Todo, PartialTodo } from "../model/Todo";
-import { Payload, partialTodo2partialPayload, payload2todo } from "./internal";
+import type { Todo, PartialTodo } from "../model/Todo";
+import { type Payload, partialTodo2partialPayload, payload2todo } from "./internal";
 
 const editTodo = async (id: number, todo: PartialTodo): Promise<Todo> => {
     const payload = partialTodo2partialPayload(todo);
