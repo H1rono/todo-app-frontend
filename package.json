@@ -9,7 +9,12 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "fmt": "biome format --write",
+    "fmt:check": "biome format",
+    "lint": "biome lint --write",
+    "lint:check": "biome lint",
+    "lint:warn": "biome lint --error-on-warnings"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -23,6 +28,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
