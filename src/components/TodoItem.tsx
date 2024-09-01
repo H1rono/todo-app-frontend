@@ -1,7 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import { css } from "@emotion/react";
-import { ListItem, ListItemIcon, ListItemText, Checkbox, ListItemButton } from "@mui/material";
+import {
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Checkbox,
+    ListItemButton,
+} from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import dayjs from "dayjs";
 import { Todo } from "../model/Todo";
@@ -32,8 +38,14 @@ const TodoItem = ({ model, onChange }: TodoItemProps) => {
                     }}
                 />
             </ListItemIcon>
-            <ListItemText primary={model.title} css={css({ flex: "0 0 auto", padding: "0 1em 0 0" })} />
-            <ListItemButton css={css({ flex: "0 0 auto" })} onClick={() => setModalOpen(true)}>
+            <ListItemText
+                primary={model.title}
+                css={css({ flex: "0 0 auto", padding: "0 1em 0 0" })}
+            />
+            <ListItemButton
+                css={css({ flex: "0 0 auto" })}
+                onClick={() => setModalOpen(true)}
+            >
                 <EditNoteIcon />
             </ListItemButton>
             <TodoModal

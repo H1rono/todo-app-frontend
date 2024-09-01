@@ -124,8 +124,20 @@ const TodoModal = ({ kind, open, model, onChange, close }: TodoModalProps) => {
                         });
                     }}
                 />
-                <Box css={css({ justifySelf: "flex-end", alignSelf: "end", marginLeft: "auto", paddingTop: "1rem" })}>
-                    <Button variant="contained" color="error" onClick={abort} css={css({ textTransform: "none" })}>
+                <Box
+                    css={css({
+                        justifySelf: "flex-end",
+                        alignSelf: "end",
+                        marginLeft: "auto",
+                        paddingTop: "1rem",
+                    })}
+                >
+                    <Button
+                        variant="contained"
+                        color="error"
+                        onClick={abort}
+                        css={css({ textTransform: "none" })}
+                    >
                         cancel
                     </Button>
                     <Button

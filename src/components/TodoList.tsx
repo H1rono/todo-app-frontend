@@ -21,10 +21,18 @@ const TodoList = ({ todos, onChange }: TodoListProps) => {
                 <TodoItem key={todo.id} model={todo} onChange={onChange} />
             ))}
             <ListItem>
-                <ListItemButton onClick={() => setModalOpen(true)} css={css({ justifyContent: "center" })}>
+                <ListItemButton
+                    onClick={() => setModalOpen(true)}
+                    css={css({ justifyContent: "center" })}
+                >
                     <AddIcon />
                 </ListItemButton>
-                <TodoModal kind="ADD" open={modalOpen} onChange={onChange} close={() => setModalOpen(false)} />
+                <TodoModal
+                    kind="ADD"
+                    open={modalOpen}
+                    onChange={onChange}
+                    close={() => setModalOpen(false)}
+                />
             </ListItem>
         </List>
     );

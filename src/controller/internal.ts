@@ -7,7 +7,10 @@ export type Payload = Omit<Todo, "dueTo" | "createdAt" | "updatedAt" | "deletedA
     deleted_at: string | null;
 };
 
-export type PartialPayload = Omit<Todo, "id" | "dueTo" | "createdAt" | "updatedAt" | "deletedAt"> & {
+export type PartialPayload = Omit<
+    Todo,
+    "id" | "dueTo" | "createdAt" | "updatedAt" | "deletedAt"
+> & {
     due_to: string;
 };
 
